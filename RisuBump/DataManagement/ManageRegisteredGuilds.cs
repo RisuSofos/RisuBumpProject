@@ -17,6 +17,9 @@ namespace RisuBump.DataManagement
             _savedGuilds = DataStorage<_dbType>.GetAllDataFromFile(_file);
         }
 
+        public static DataForms.GuildStorage GetGuildById(ulong id)
+            => _savedGuilds[id];
+
         public static void AddGuildById(ulong id)
         {
             _savedGuilds.Add(id, new DataForms.GuildStorage());
