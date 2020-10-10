@@ -2,7 +2,7 @@
 This is a free and open source discord bot designed for server owners to advertise their server.
 
 ## Invite
-[https://discord.com/api/oauth2/authorize?client_id=678318958004404225&permissions=346241&scope=bot]
+https://discord.com/api/oauth2/authorize?client_id=678318958004404225&permissions=346241&scope=bot
 
 ## Setup
 Make sure to paste your token and prefix into RisuBump/bot/config.json
