@@ -1,13 +1,14 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Discord.WebSocket;
+using _dbType = System.Collections.Generic.Dictionary<ulong, RisuBump.DataManagement.DataForms.GuildStorage>;
 
 namespace RisuBump.DataManagement
 {
     public class ManageRegisteredGuilds
     {
-        Type _dbType = Dictionary<ulong, DataForms.GuildStorage>;
-        private _dbType _savedGuilds;
+        private static _dbType _savedGuilds;
 
         private const string _directory = "../DataStore";
         private const string _file = "../DataStore/registered_guilds.json";
@@ -43,9 +44,9 @@ namespace RisuBump.DataManagement
             var guilds = client.Guilds;
             var updatedGuildList = new _dbType();
 
-            foreach (KetValuePair<ulong, DataForms.GuildStorage> _savedGuild in _savedGuilds)
+            foreach (KeyValuePair<ulong, DataForms.GuildStorage> _savedGuild in _savedGuilds)
             {
-                foreach (SocketGuild guild in guilds) updatedGuildList.Add(guild.Id, _savedGuild.Item2);
+                foreach (SocketGuild guild in guilds) updatedGuildList.Add(guild.Id, _savedGuild.Value);
             }
 
             DataStorage<_dbType>.SaveDataToFile(_file, updatedGuildList);

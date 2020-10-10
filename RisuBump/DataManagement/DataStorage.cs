@@ -9,18 +9,15 @@ namespace RisuBump.DataManagement {
         }
 
         public static T GetAllDataFromFile(string filepath) {
-            if (!File.Exists) {
-                File.Create(filepath);
-                return new T();
-            }
+            if (!File.Exists(filepath)) File.Create(filepath);
             
-            JsonConvert.DeserializeObject<T>(File.ReadAllText(filepath));
+            return JsonConvert.DeserializeObject<T>(File.ReadAllText(filepath));
         }
 
     }
 
     public class DataStorage {
-        public static bool FileExists(string filepath) => File.Exists();
-        public static bool DirExists(string directory) => Directory.Exists();
+        public static bool FileExists(string filepath) => File.Exists(filepath);
+        public static bool DirExists(string directory) => Directory.Exists(directory);
     }
 }
